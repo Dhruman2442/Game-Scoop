@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ValorantNews {
   String name;
   String title;
@@ -21,4 +23,12 @@ class ValorantNews {
   String toString() {
     return '{ $name, $title, $url, $urlToImage, $content }';
   }
+}
+
+class DetailsAgents {
+  final String AgentDetails;
+  final AssetImage images;
+  final String AgentName;
+
+  DetailsAgents(this.AgentDetails, this.images, this.AgentName);
 }
