@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamescoop/Screens/Valorant/Valorant-Page-Design.dart';
 import 'package:gamescoop/Screens/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -16,13 +17,13 @@ class MyApp extends StatelessWidget {
       ),
       home: SplashScreen(
         gradientBackground:
-            LinearGradient(colors: [Colors.black, Colors.black]),
+            const LinearGradient(colors: [Colors.black, Colors.black]),
         image: Image.asset(
           "asset/images/GamescoopLogo.png",
         ),
         photoSize: 150.0,
         seconds: 3,
-        navigateAfterSeconds: const LoginScreen(),
+        navigateAfterSeconds:  ValorantPageDesign(),
         loadingText: Text("GameScoop",
             style: GoogleFonts.balooBhai(color: Colors.white, fontSize: 50)),
         loaderColor: Colors.transparent,

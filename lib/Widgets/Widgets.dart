@@ -26,6 +26,50 @@ List<AssetImage> Images = [
   const AssetImage("asset/Agents/Viper.png"),
   const AssetImage("asset/Agents/Yoru.png"),
 ];
+
+List<String> AgentName = [
+  "Astra",
+  "Breach",
+  "Brimestone",
+  "Chamber",
+  "Cypher",
+  "Fade",
+  "Jett",
+  "Kay/O",
+  "Killjoy",
+  "Neon",
+  "Omen",
+  "Pheonix",
+  "Raze",
+  "Reyna",
+  "Sage",
+  "Skye",
+  "Sova",
+  "Viper",
+  "Yoru",
+];
+List<String> MapsImages = [
+  "asset/Maps/Ascent.webp",
+  "asset/Maps/Bind.webp",
+  "asset/Maps/Breeze.webp",
+  "asset/Maps/Fracture.webp",
+  "asset/Maps/Haven.webp",
+  "asset/Maps/Icebox.webp",
+  "asset/Maps/Range.webp",
+  "asset/Maps/Split.webp",
+];
+
+List<String> MapName = [
+  "Ascent",
+  "Bind",
+  "Breeze",
+  "Fracture",
+  "Haven",
+  "Ice-Box",
+  "Range",
+  "Split",
+];
+
 List<AssetImage> FeatureImages = [
   const AssetImage("asset/Plane/Duelist.png"),
   const AssetImage("asset/Plane/Initiater.png"),
@@ -51,27 +95,6 @@ List<Color> CardColor = [
   Colors.blue.shade700,
   Colors.green.shade900,
   Colors.blueAccent.shade700,
-];
-List<String> AgentName = [
-  "Astra",
-  "Breach",
-  "Brimestone",
-  "Chamber",
-  "Cypher",
-  "Fade",
-  "Jett",
-  "Kay/O",
-  "Killjoy",
-  "Neon",
-  "Omen",
-  "Pheonix",
-  "Raze",
-  "Reyna",
-  "Sage",
-  "Skye",
-  "Sova",
-  "Viper",
-  "Yoru",
 ];
 List<String> AvatarRoles = [
   "Duelist",
@@ -371,8 +394,6 @@ Widget customgamelisttile(Color colors, String images, VoidCallback onpress) {
   );
 }
 
-
-
 Widget WeaponsTiles() {
   return TextStyle1("Weapons", 16, Colors.white, FontWeight.bold,
       TextAlign.center, FontStyle.normal);
@@ -506,26 +527,6 @@ Widget buildSliderAgents(BuildContext context, List<Widget> items) {
   );
 }
 
-Widget buildSliderMaps(BuildContext context, List<Widget> items) {
-  return CarouselSlider(
-    items: items,
-
-    //Slider Container properties
-    options: CarouselOptions(
-      enlargeCenterPage: true,
-      pauseAutoPlayOnTouch: true,
-      scrollPhysics: const BouncingScrollPhysics(),
-      // autoPlay: true,
-      height: 350,
-      autoPlayCurve: Curves.ease,
-      enableInfiniteScroll: true,
-      autoPlayAnimationDuration: const Duration(milliseconds: 1000),
-      viewportFraction: 0.6,
-      disableCenter: true,
-      clipBehavior: Clip.hardEdge,
-    ),
-  );
-}
 
 Widget SliderAgentListTile(String title, Color colors, AssetImage images) {
   return Column(
@@ -580,6 +581,60 @@ Widget SliderAgentListTile(String title, Color colors, AssetImage images) {
     ],
   );
 }
+Widget buildSliderMaps(BuildContext context, List<Widget> items) {
+  return CarouselSlider(
+    items: items,
+
+    //Slider Container properties
+    options: CarouselOptions(
+      enlargeCenterPage: true,
+      pauseAutoPlayOnTouch: true,
+      scrollPhysics: const BouncingScrollPhysics(),
+      // autoPlay: true,
+      autoPlayCurve: Curves.ease,
+      enableInfiniteScroll: true,
+      autoPlayAnimationDuration: const Duration(milliseconds: 1000),
+      viewportFraction: 0.7,
+      disableCenter: true,
+      clipBehavior: Clip.hardEdge,
+    ),
+  );
+}
+
+Widget SliderMapListTile(String title, Color colors, String images) {
+  return Column(children: [
+    Card(
+        elevation: 10,
+        shadowColor: Colors.grey.shade900,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        color: Colors.transparent,
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        alignment: Alignment.center,
+                        image: AssetImage(images),opacity: 0.8,colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstATop),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: 300,
+                      height: 175,
+                    )),
+                Space(10),
+                TextStyle1(title, 18, Colors.white, FontWeight.w500,
+                    TextAlign.center, FontStyle.normal)
+              ],
+            ),
+          ],
+        ))
+  ]);
+}
 
 Widget Tabs(
     VoidCallback onPressed,
@@ -595,7 +650,6 @@ Widget Tabs(
     onTap: onPressed,
     child: Stack(
       alignment: Alignment.bottomCenter,
-      fit: StackFit.loose,
       children: [
         // Center(
         // child:
@@ -610,6 +664,7 @@ Widget Tabs(
         ),
         // ),
         Container(
+          width: MediaQuery.of(context).size.width / 3,
           margin: const EdgeInsets.only(bottom: 15),
           child: TextStyle1(
               text, size, tabtextcolor, fontWeight, textAlign, fontStyle),

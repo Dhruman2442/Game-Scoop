@@ -13,15 +13,18 @@ import 'package:get/get.dart';
 bool _showAgentsContainer = true;
 bool _showNewsContainer = false;
 
-bool _AgentRolesTiles = false;
-bool _WeaponsTiles = true;
+bool _AgentRolesTiles = true;
+
+bool _WeaponsTiles = false;
 bool _MapTiles = false;
 
-Color _RolesColor = Colors.transparent;
-Color _AgentColor = Colors.transparent;
+Color _WeaponColor = Colors.transparent;
 Color _MapColor = Colors.transparent;
-Color _TabAgentTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
-Color _TabRolesTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
+Color _TabWeaponTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
+Color _RolesColor = const Color(0xFF9CAFF0);
+Color _TabRolesTextColor = const Color(0xFF9CAFF0
+);
+
 Color _TabMapTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
 
 int _currentIndex = 0;
@@ -102,7 +105,6 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
             Container(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Tabs(() {
@@ -121,8 +123,8 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                           _TabMapTextColor = const Color(0xA39CAFF0);
                         }
                         if (_WeaponsTiles == false) {
-                          _AgentColor = Colors.transparent;
-                          _TabAgentTextColor = const Color(0xA39CAFF0);
+                          _WeaponColor = Colors.transparent;
+                          _TabWeaponTextColor = const Color(0xA39CAFF0);
                         }
                       });
                     },
@@ -149,18 +151,25 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                           _TabMapTextColor = const Color(0xFF9CAFF0);
                         }
                         if (_WeaponsTiles == false) {
-                          _AgentColor = Colors.transparent;
-                          _TabAgentTextColor = const Color(0xA39CAFF0);
+                          _WeaponColor = Colors.transparent;
+                          _TabWeaponTextColor = const Color(0xA39CAFF0);
                         }
                       });
-                    }, "Maps", 18, _MapColor, _TabMapTextColor, FontWeight.w600,
-                        TextAlign.center, FontStyle.normal, context),
+                    },
+                        "Maps",
+                        18,
+                        _MapColor,
+                        _TabMapTextColor,
+                        FontWeight.w600,
+                        TextAlign.center,
+                        FontStyle.normal,
+                        context),
                     Tabs(() {
                       setState(() {
                         _AgentRolesTiles = false;
                         _MapTiles = false;
                         _WeaponsTiles = true;
-                        _TabAgentTextColor = const Color(0xFF9CAFF0);
+                        _TabWeaponTextColor = const Color(0xFF9CAFF0);
 
                         if (_AgentRolesTiles == false) {
                           _RolesColor = Colors.transparent;
@@ -171,15 +180,15 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                           _TabMapTextColor = const Color(0xA39CAFF0);
                         }
                         if (_WeaponsTiles == true) {
-                          _AgentColor = const Color(0xFF9CAFF0);
-                          _TabAgentTextColor = const Color(0xFF9CAFF0);
+                          _WeaponColor = const Color(0xFF9CAFF0);
+                          _TabWeaponTextColor = const Color(0xFF9CAFF0);
                         }
                       });
                     },
                         "Weapons",
                         19,
-                        _AgentColor,
-                        _TabAgentTextColor,
+                        _WeaponColor,
+                        _TabWeaponTextColor,
                         FontWeight.w600,
                         TextAlign.center,
                         FontStyle.normal,
@@ -189,11 +198,12 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
             Visibility(
                 child: Column(
                   children: [
-                    RolesTile(
-                        AvatarRoles[0], FeatureImages[0], Colors.white, () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => GamePage()));
-                    }),
+                    RolesTile(AvatarRoles[0], FeatureImages[0], Colors.white,
+                            () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => GamePage()));
+                        }),
                     RolesTile(
                         AvatarRoles[1], FeatureImages[1], Colors.white, () {}),
                     RolesTile(
@@ -203,8 +213,40 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                   ],
                 ),
                 visible: _AgentRolesTiles),
-            Visibility(child: WeaponsTiles(), visible: _WeaponsTiles),
-            Visibility(child: MapsTiles(), visible: _MapTiles),
+            Visibility(
+                child: buildSliderAgents(context, [
+                  SliderAgentListTile(AgentName[0], CardColor[0], Images[0]),
+                  SliderAgentListTile(AgentName[1], CardColor[1], Images[1]),
+                  SliderAgentListTile(AgentName[2], CardColor[2], Images[2]),
+                  SliderAgentListTile(AgentName[3], CardColor[3], Images[3]),
+                  SliderAgentListTile(AgentName[4], CardColor[4], Images[4]),
+                  SliderAgentListTile(AgentName[5], CardColor[5], Images[5]),
+                  SliderAgentListTile(AgentName[6], CardColor[6], Images[6]),
+                  SliderAgentListTile(AgentName[7], CardColor[7], Images[7]),
+                  SliderAgentListTile(AgentName[8], CardColor[8], Images[8]),
+                  SliderAgentListTile(AgentName[9], CardColor[9], Images[9]),
+                  SliderAgentListTile(AgentName[10], CardColor[10], Images[10]),
+                  SliderAgentListTile(AgentName[11], CardColor[11], Images[11]),
+                  SliderAgentListTile(AgentName[12], CardColor[12], Images[12]),
+                  SliderAgentListTile(AgentName[13], CardColor[13], Images[13]),
+                  SliderAgentListTile(AgentName[14], CardColor[14], Images[14]),
+                  SliderAgentListTile(AgentName[15], CardColor[15], Images[15]),
+                  SliderAgentListTile(AgentName[16], CardColor[16], Images[16]),
+                  SliderAgentListTile(AgentName[17], CardColor[17], Images[17]),
+                ]),
+                visible: _WeaponsTiles),
+            Visibility(
+                child: buildSliderMaps(context, [
+                  SliderMapListTile(MapName[0], CardColor[0], MapsImages[0]),
+                  SliderMapListTile(MapName[1], CardColor[1], MapsImages[1]),
+                  SliderMapListTile(MapName[2], CardColor[2], MapsImages[2]),
+                  SliderMapListTile(MapName[3], CardColor[3], MapsImages[3]),
+                  SliderMapListTile(MapName[4], CardColor[4], MapsImages[4]),
+                  SliderMapListTile(MapName[5], CardColor[5], MapsImages[5]),
+                  SliderMapListTile(MapName[6], CardColor[6], MapsImages[6]),
+                  SliderMapListTile(MapName[7], CardColor[7], MapsImages[7]),
+                ]),
+                visible: _MapTiles),
           ],
         ));
   }
@@ -218,15 +260,15 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
         return (controller.loading)
             ? Container()
             : Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: controller.newsList.length,
-                  itemBuilder: (context, index) {
-                    return NewsTile(newcontroller.newsList[index]);
-                  },
-                ),
-              );
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemCount: controller.newsList.length,
+            itemBuilder: (context, index) {
+              return NewsTile(newcontroller.newsList[index]);
+            },
+          ),
+        );
       },
     ));
   }
