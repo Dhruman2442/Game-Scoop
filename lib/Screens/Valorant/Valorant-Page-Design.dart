@@ -5,6 +5,7 @@ import 'package:custom_fade_animation/custom_fade_animation.dart'
     show FadeAnimation;
 import 'package:flutter/material.dart';
 import 'package:gamescoop/Controller/ValorantNews_Controller.dart';
+import 'package:gamescoop/Screens/Valorant/Details-Page.dart';
 import 'package:gamescoop/Screens/Valorant/News/News-tile.dart';
 import 'package:gamescoop/Screens/home_page.dart';
 import 'package:gamescoop/Widgets/Widgets.dart';
@@ -14,17 +15,15 @@ bool _showAgentsContainer = true;
 bool _showNewsContainer = false;
 
 bool _AgentRolesTiles = true;
-
 bool _WeaponsTiles = false;
 bool _MapTiles = false;
 
 Color _WeaponColor = Colors.transparent;
 Color _MapColor = Colors.transparent;
-Color _TabWeaponTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
 Color _RolesColor = const Color(0xFF9CAFF0);
-Color _TabRolesTextColor = const Color(0xFF9CAFF0
-);
 
+Color _TabWeaponTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
+Color _TabRolesTextColor = const Color(0xFF9CAFF0);
 Color _TabMapTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
 
 int _currentIndex = 0;
@@ -82,26 +81,24 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
             TextStyle1("Choose your Agent", 24, Colors.white, FontWeight.w600,
                 TextAlign.center, FontStyle.normal),
             Space(20),
-            buildSliderAgents(context, [
-              SliderAgentListTile(AgentName[0], CardColor[0], Images[0]),
-              SliderAgentListTile(AgentName[1], CardColor[1], Images[1]),
-              SliderAgentListTile(AgentName[2], CardColor[2], Images[2]),
-              SliderAgentListTile(AgentName[3], CardColor[3], Images[3]),
-              SliderAgentListTile(AgentName[4], CardColor[4], Images[4]),
-              SliderAgentListTile(AgentName[5], CardColor[5], Images[5]),
-              SliderAgentListTile(AgentName[6], CardColor[6], Images[6]),
-              SliderAgentListTile(AgentName[7], CardColor[7], Images[7]),
-              SliderAgentListTile(AgentName[8], CardColor[8], Images[8]),
-              SliderAgentListTile(AgentName[9], CardColor[9], Images[9]),
-              SliderAgentListTile(AgentName[10], CardColor[10], Images[10]),
-              SliderAgentListTile(AgentName[11], CardColor[11], Images[11]),
-              SliderAgentListTile(AgentName[12], CardColor[12], Images[12]),
-              SliderAgentListTile(AgentName[13], CardColor[13], Images[13]),
-              SliderAgentListTile(AgentName[14], CardColor[14], Images[14]),
-              SliderAgentListTile(AgentName[15], CardColor[15], Images[15]),
-              SliderAgentListTile(AgentName[16], CardColor[16], Images[16]),
-              SliderAgentListTile(AgentName[17], CardColor[17], Images[17]),
-            ]),
+            buildSliderAgents(
+                context,
+                List.generate(
+                    AgentName.length,
+                    (index) => SliderAgentListTile(
+                            AgentName[index], CardColor[index], Images[index],
+                            () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => DetailScreen(
+                                    detailsAgentsModel: AgentDetailsData[index],
+                                  )));
+                        })
+
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => TransactionDetail(
+                    //       transactionDataModel: TransactionData[index],
+                    //     )));
+                    )),
             Container(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Row(
@@ -155,15 +152,8 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                           _TabWeaponTextColor = const Color(0xA39CAFF0);
                         }
                       });
-                    },
-                        "Maps",
-                        18,
-                        _MapColor,
-                        _TabMapTextColor,
-                        FontWeight.w600,
-                        TextAlign.center,
-                        FontStyle.normal,
-                        context),
+                    }, "Maps", 18, _MapColor, _TabMapTextColor, FontWeight.w600,
+                        TextAlign.center, FontStyle.normal, context),
                     Tabs(() {
                       setState(() {
                         _AgentRolesTiles = false;
@@ -199,11 +189,10 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                 child: Column(
                   children: [
                     RolesTile(AvatarRoles[0], FeatureImages[0], Colors.white,
-                            () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => GamePage()));
-                        }),
+                        () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => GamePage()));
+                    }),
                     RolesTile(
                         AvatarRoles[1], FeatureImages[1], Colors.white, () {}),
                     RolesTile(
@@ -214,38 +203,26 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                 ),
                 visible: _AgentRolesTiles),
             Visibility(
-                child: buildSliderAgents(context, [
-                  SliderAgentListTile(AgentName[0], CardColor[0], Images[0]),
-                  SliderAgentListTile(AgentName[1], CardColor[1], Images[1]),
-                  SliderAgentListTile(AgentName[2], CardColor[2], Images[2]),
-                  SliderAgentListTile(AgentName[3], CardColor[3], Images[3]),
-                  SliderAgentListTile(AgentName[4], CardColor[4], Images[4]),
-                  SliderAgentListTile(AgentName[5], CardColor[5], Images[5]),
-                  SliderAgentListTile(AgentName[6], CardColor[6], Images[6]),
-                  SliderAgentListTile(AgentName[7], CardColor[7], Images[7]),
-                  SliderAgentListTile(AgentName[8], CardColor[8], Images[8]),
-                  SliderAgentListTile(AgentName[9], CardColor[9], Images[9]),
-                  SliderAgentListTile(AgentName[10], CardColor[10], Images[10]),
-                  SliderAgentListTile(AgentName[11], CardColor[11], Images[11]),
-                  SliderAgentListTile(AgentName[12], CardColor[12], Images[12]),
-                  SliderAgentListTile(AgentName[13], CardColor[13], Images[13]),
-                  SliderAgentListTile(AgentName[14], CardColor[14], Images[14]),
-                  SliderAgentListTile(AgentName[15], CardColor[15], Images[15]),
-                  SliderAgentListTile(AgentName[16], CardColor[16], Images[16]),
-                  SliderAgentListTile(AgentName[17], CardColor[17], Images[17]),
-                ]),
+                child: buildSliderAgents(
+                    context,
+                    List.generate(
+                        AgentName.length,
+                        (index) => SliderAgentListTile(AgentName[index],
+                                CardColor[index], Images[index], () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => DetailScreen(
+                                        detailsAgentsModel:
+                                            AgentDetailsData[index],
+                                      )));
+                            }))),
                 visible: _WeaponsTiles),
             Visibility(
-                child: buildSliderMaps(context, [
-                  SliderMapListTile(MapName[0], CardColor[0], MapsImages[0]),
-                  SliderMapListTile(MapName[1], CardColor[1], MapsImages[1]),
-                  SliderMapListTile(MapName[2], CardColor[2], MapsImages[2]),
-                  SliderMapListTile(MapName[3], CardColor[3], MapsImages[3]),
-                  SliderMapListTile(MapName[4], CardColor[4], MapsImages[4]),
-                  SliderMapListTile(MapName[5], CardColor[5], MapsImages[5]),
-                  SliderMapListTile(MapName[6], CardColor[6], MapsImages[6]),
-                  SliderMapListTile(MapName[7], CardColor[7], MapsImages[7]),
-                ]),
+                child: buildSliderMaps(
+                    context,
+                    List.generate(
+                        MapName.length,
+                        (index) => SliderMapListTile(MapName[index],
+                            CardColor[index], MapsImages[index]))),
                 visible: _MapTiles),
           ],
         ));
@@ -260,15 +237,15 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
         return (controller.loading)
             ? Container()
             : Expanded(
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: const BouncingScrollPhysics(),
-            itemCount: controller.newsList.length,
-            itemBuilder: (context, index) {
-              return NewsTile(newcontroller.newsList[index]);
-            },
-          ),
-        );
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: controller.newsList.length,
+                  itemBuilder: (context, index) {
+                    return NewsTile(newcontroller.newsList[index]);
+                  },
+                ),
+              );
       },
     ));
   }

@@ -2,7 +2,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:gamescoop/Screens/home_page.dart';
+import 'package:gamescoop/models.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 List<AssetImage> Images = [
@@ -25,6 +25,27 @@ List<AssetImage> Images = [
   const AssetImage("asset/Agents/Sova.png"),
   const AssetImage("asset/Agents/Viper.png"),
   const AssetImage("asset/Agents/Yoru.png"),
+];
+List<String> AgentImages = [
+  "asset/Agents/Astra.png",
+  "asset/Agents/Breach.png",
+  "asset/Agents/Brimestone.png",
+  "asset/Agents/Chamber.png",
+  "asset/Agents/Cypher.png",
+  "asset/Agents/Fade.png",
+  "asset/Agents/Jett.png",
+  "asset/Agents/Kayo.png",
+  "asset/Agents/Killjoy.png",
+  "asset/Agents/Neon.png",
+  "asset/Agents/Omen.png",
+  "asset/Agents/Pheonix.png",
+  "asset/Agents/Raze.png",
+  "asset/Agents/Reyna.png",
+  "asset/Agents/Sage.png",
+  "asset/Agents/Skye.png",
+  "asset/Agents/Sova.png",
+  "asset/Agents/Viper.png",
+  "asset/Agents/Yoru.png",
 ];
 
 List<String> AgentName = [
@@ -95,6 +116,7 @@ List<Color> CardColor = [
   Colors.blue.shade700,
   Colors.green.shade900,
   Colors.blueAccent.shade700,
+  Colors.blueAccent.shade700,
 ];
 List<String> AvatarRoles = [
   "Duelist",
@@ -102,28 +124,33 @@ List<String> AvatarRoles = [
   "Sentinel",
   "Controller",
 ];
-List<String> AgentVoices = [
-  '"I am on a higher plane"',
-  '"Stand in my way. I dare you."',
-  '"They think I am an old dog? Heh, I will show them just how many tricks I know."',
-  '"You have good taste, my friend."',
-  '"Nothing stays hidden from me. Nothing."',
-  "Everyone is afraid of something.",
-  '"Cool. Lets go."',
-  '"Lets do this."',
-  '"Relax, I have already thought of everything."',
-  '"Move, or get zapped."',
-  '"I am the beginning. I am the end."',
-  '"Just take a seat, I got this."',
-  '"Yes, I am pumped!"',
-  '"They have no idea how heartless I am."',
-  '"I am both shield and sword."',
-  '"Alright! Where is the fight?"',
-  '"Wherever they run, I will find them."',
-  '"No one can hold their breath forever."',
-  '"I will fight anybody. Ill fight"',
+List<String> AgentDescription = [
+  '"Ghanaian Agent Astra harnesses the energies of the cosmos to reshape battlefields to her whim. With full command of her astral form and a talent for deep strategic foresight, she’s always eons ahead of her enemy’s next move."',
+  '"Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair."',
+  '"Joining from the USA, Brimstones orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and from a distance make him an unmatched boots-on-the-ground commander."',
+  '"Well dressed and well armed, French weapons designer Chamber expels aggressors with deadly precision. He leverages his custom arsenal to hold the line and pick off enemies from afar, with a contingency built for every plan."',
+  '"The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy’s every move. No secret is safe. No maneuver goes unseen. Cypher is always watching."',
+  '"Turkish bounty hunter Fade unleashes the power of raw nightmare to seize enemy secrets. Attuned with terror itself, she hunts down targets and reveals their deepest fears - before crushing them in the dark."',
+  '"Representing her home country of South Korea, Jetts agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them."',
+  '"KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to suppress enemy abilities cripples his opponents capacity to fight back, securing him and his allies the ultimate edge."',
+  '"The genius of Germany, Killjoy secures the battlefield with ease using her arsenal of inventions. If the damage from her gear does not stop her enemies, her robots debuff will help make short work of them."',
+  '"Filipino Agent, Neon, surges forward at shocking speeds, discharging bursts of bioelectric radiance as fast as her body generates it. She races ahead to catch enemies off guard, then strikes them down quicker than lightning."',
+  '"A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to learn where he might strike next."',
+  '"Hailing from the U.K., Phoenix is star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he got backup or not, he will rush into a fight on his own terms."',
+  '"Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of “boom.”"',
+  '"Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her highly dependent on performance."',
+  '"The bastion of China, Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends and stave off aggressive pushes, she provides a calm center to a hellish fight."',
+  '"Hailing from Australia, Skye and her band of beasts trail-blaze the way through hostile territory. With her creations hampering the enemy, and her power to heal others, the team is strongest and safest by Skyes side."',
+  '"Born from the eternal winter of Russias tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide."',
+  '"The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemys vision. If the toxins do not kill her prey, her mind games surely will."',
+  '"Japanese native Yoru rips holes straight through reality to infiltrate enemy lines unseen. Using deception and aggression in equal measure, he gets the drop on each target before they know where to look."',
 ];
 
+
+final List<DetailsAgentsModel> AgentDetailsData = List.generate(
+    AgentName.length,
+    (index) => DetailsAgentsModel(AgentName[index], AgentImages[index],
+        AgentDescription[index], CardColor[index]));
 // Common Widget
 Widget Logo(BuildContext context) {
   return Container(
@@ -527,60 +554,64 @@ Widget buildSliderAgents(BuildContext context, List<Widget> items) {
   );
 }
 
-
-Widget SliderAgentListTile(String title, Color colors, AssetImage images) {
+Widget SliderAgentListTile(String title, Color colors, AssetImage images,
+    VoidCallback AgentDetailsPage) {
   return Column(
     children: [
-      Card(
-        elevation: 10,
-        shadowColor: Colors.grey.shade900,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.transparent,
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.center,
+      GestureDetector(
+          onTap: AgentDetailsPage,
+          child: Card(
+            elevation: 10,
+            shadowColor: Colors.grey.shade900,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            color: Colors.transparent,
+            child: Column(
               children: [
-                //color design background
-                Container(
-                    height: 275,
-                    width: 200,
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: colors.withOpacity(0.4),
-                      ),
-                      child: const SizedBox(),
-                    )),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    //color design background
+                    Container(
+                        height: 275,
+                        width: 200,
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: colors.withOpacity(0.4),
+                          ),
+                          child: const SizedBox(),
+                        )),
 
-                //Image of the agents
-                Container(
-                    padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.transparent,
-                      image: DecorationImage(
-                        alignment: Alignment.center,
-                        image: images,
-                      ),
-                    ),
-                    child: const SizedBox(
-                      height: 243,
-                      width: 200,
-                    )),
+                    //Image of the agents
+                    Container(
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.transparent,
+                          image: DecorationImage(
+                            alignment: Alignment.center,
+                            image: images,
+                          ),
+                        ),
+                        child: const SizedBox(
+                          height: 243,
+                          width: 200,
+                        )),
+                  ],
+                ),
+                Space(10),
+                TextStyle1(title, 18, Colors.white, FontWeight.w500,
+                    TextAlign.center, FontStyle.normal)
               ],
             ),
-            Space(10),
-            TextStyle1(title, 18, Colors.white, FontWeight.w500,
-                TextAlign.center, FontStyle.normal)
-          ],
-        ),
-      )
+          )),
     ],
   );
 }
+
 Widget buildSliderMaps(BuildContext context, List<Widget> items) {
   return CarouselSlider(
     items: items,
@@ -618,7 +649,10 @@ Widget SliderMapListTile(String title, Color colors, String images) {
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                         alignment: Alignment.center,
-                        image: AssetImage(images),opacity: 0.8,colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstATop),
+                        image: AssetImage(images),
+                        opacity: 0.8,
+                        colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.9), BlendMode.dstATop),
                         fit: BoxFit.cover,
                       ),
                     ),

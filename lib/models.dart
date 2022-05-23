@@ -25,10 +25,11 @@ class ValorantNews {
   }
 }
 
-class DetailsAgents {
-  final String AgentDetails;
-  final AssetImage images;
-  final String AgentName;
+class DetailsAgentsModel {
+  final String agentName;
+  final String images;
+  final String agentDetails;
+  final Color color;
 
-  DetailsAgents(this.AgentDetails, this.images, this.AgentName);
+  DetailsAgentsModel(this.agentName, this.images, this.agentDetails,this.color);
 }
