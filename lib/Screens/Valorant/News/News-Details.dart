@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gamescoop/Controller/ValorantNews_Controller.dart';
+import 'package:gamescoop/Controller/News_Controller.dart';
 import 'package:gamescoop/Widgets/Widgets.dart';
 import 'package:gamescoop/models.dart';
 import 'package:get/get.dart';
 
 class NewsDetails extends StatefulWidget {
-  final ValorantNews news;
+  final News news;
 
   const NewsDetails(this.news, {Key? key}) : super(key: key);
 
@@ -14,7 +14,7 @@ class NewsDetails extends StatefulWidget {
 }
 
 class _NewsDetailsState extends State<NewsDetails> {
-  final NewsController movieController = Get.put(NewsController());
+  final ValorantNewsController movieController = Get.put(ValorantNewsController());
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:gamescoop/models.dart';
 import 'package:get_storage/get_storage.dart';
 
 class NewsTile extends StatelessWidget {
-  final ValorantNews news;
+  final News news;
 
   const NewsTile(this.news, {Key? key}) : super(key: key);
 

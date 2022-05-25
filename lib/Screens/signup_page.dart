@@ -2,7 +2,6 @@ import 'package:custom_fade_animation/custom_fade_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:gamescoop/Screens/home_page.dart';
 import 'package:gamescoop/Screens/login_page.dart';
-
 import '../Widgets/Widgets.dart';
 
 bool _isObscure = true;
@@ -74,7 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
               FontWeight.normal,
               TextAlign.center,
               FontStyle.normal,
-              "asset/images/Email.png"),
+              "asset/Icons/Email.png"),
           Space(20),
           Textfield2(
               "Phone Number",
@@ -84,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
               FontWeight.normal,
               TextAlign.center,
               FontStyle.normal,
-              "asset/images/Key.png"),
+              "asset/Icons/Key.png"),
           Space(20),
           GestureDetector(
             onTap: () {
@@ -138,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
               FontWeight.normal,
               TextAlign.center,
               FontStyle.normal,
-              "asset/images/Key.png", () {
+              "asset/Icons/Key.png", () {
             setState(() {
               _isObscure = !_isObscure;
             });
@@ -152,7 +151,7 @@ class _SignupScreenState extends State<SignupScreen> {
               FontWeight.normal,
               TextAlign.center,
               FontStyle.normal,
-              "asset/images/Key.png", () {
+              "asset/Icons/Key.png", () {
             setState(() {
               _isObscure = !_isObscure;
             });
@@ -161,7 +160,7 @@ class _SignupScreenState extends State<SignupScreen> {
           Button1("Sign Up", 20, Colors.purple.shade900, FontWeight.normal,
               TextAlign.center, FontStyle.normal, () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => GamePage()));
+                .push(MaterialPageRoute(builder: (context) => const GamePage()));
           }, context),
         ],
       ),

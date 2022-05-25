@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamescoop/Screens/Apex/News/Apex-Page-Design.dart';
 import 'package:gamescoop/Screens/Valorant/Valorant-Page-Design.dart';
 import 'package:gamescoop/Widgets/Widgets.dart';
 
@@ -49,11 +50,16 @@ class _GamePageState extends State<GamePage> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         children: [
           customgamelisttile(Colors.white, images[0], () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ValorantPageDesign()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ValorantPageDesign()));
           }),
           customgamelisttile(Colors.black, images[1], () {}),
-          customgamelisttile(Colors.black, images[2], () {}),
+          customgamelisttile(Colors.black, images[2], () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ApexPageDesign()));
+          }),
           customgamelisttile(Colors.black, images[3], () {}),
           customgamelisttile(Colors.black, images[4], () {}),
           customgamelisttile(Colors.black, images[5], () {}),

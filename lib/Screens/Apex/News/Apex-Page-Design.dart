@@ -29,21 +29,20 @@ Color _TabMapTextColor = const Color(0xFF9CAFF0).withOpacity(0.5);
 
 int _currentIndex = 0;
 
-class ValorantPageDesign extends StatefulWidget {
-  const ValorantPageDesign({Key? key}) : super(key: key);
+class ApexPageDesign extends StatefulWidget {
+  const ApexPageDesign({Key? key}) : super(key: key);
 
   @override
-  _ValorantPageDesignState createState() => _ValorantPageDesignState();
+  _ApexPageDesignState createState() => _ApexPageDesignState();
 }
 
-class _ValorantPageDesignState extends State<ValorantPageDesign> {
-  final ValorantNewsController newcontroller =
-      Get.put(ValorantNewsController());
+class _ApexPageDesignState extends State<ApexPageDesign> {
+  final ApexNewsController newcontroller = Get.put(ApexNewsController());
 
   @override
   void initState() {
     newcontroller.loading = true;
-    newcontroller.fetchvalorantnews();
+    newcontroller.fetchapexnews();
     super.initState();
   }
 
@@ -54,7 +53,7 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color(0xB5212121),
-        title: TextStyle1('Valorant', 18, Colors.white, FontWeight.bold,
+        title: TextStyle1('Apex', 18, Colors.white, FontWeight.bold,
             TextAlign.center, FontStyle.normal),
       ),
       bottomNavigationBar: bottomNavBar(),
@@ -87,13 +86,16 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                 context,
                 List.generate(
                     AgentName.length,
-                    (index) => SliderAgentListTile(AgentName[index],
-                            CardColor[index], ValorantImages[index], () {
+                        (index) => SliderAgentListTile(
+                        AgentName[index], CardColor[index], ValorantImages[index],
+                            () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => DetailScreen(
-                                    detailsAgentsModel: AgentDetailsData[index],
-                                  )));
-                        }))),
+                                detailsAgentsModel: AgentDetailsData[index],
+                              )));
+                        })
+
+                )),
             Container(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Row(
@@ -184,10 +186,10 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                 child: Column(
                   children: [
                     RolesTile(AvatarRoles[0], FeatureImages[0], Colors.white,
-                        () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => GamePage()));
-                    }),
+                            () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => GamePage()));
+                        }),
                     RolesTile(
                         AvatarRoles[1], FeatureImages[1], Colors.white, () {}),
                     RolesTile(
@@ -202,13 +204,13 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                     context,
                     List.generate(
                         AgentName.length,
-                        (index) => SliderAgentListTile(AgentName[index],
-                                CardColor[index], ValorantImages[index], () {
+                            (index) => SliderAgentListTile(AgentName[index],
+                            CardColor[index], ValorantImages[index], () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => DetailScreen(
-                                        detailsAgentsModel:
-                                            AgentDetailsData[index],
-                                      )));
+                                    detailsAgentsModel:
+                                    AgentDetailsData[index],
+                                  )));
                             }))),
                 visible: _WeaponsTiles),
             Visibility(
@@ -216,7 +218,7 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
                     context,
                     List.generate(
                         MapName.length,
-                        (index) => SliderMapListTile(MapName[index],
+                            (index) => SliderMapListTile(MapName[index],
                             CardColor[index], MapsImages[index]))),
                 visible: _MapTiles),
           ],
@@ -228,19 +230,19 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
   // }
   Widget NewsContainer() {
     return FadeAnimation(2, GetBuilder(
-      builder: (ValorantNewsController controller) {
+      builder: (ApexNewsController controller) {
         return (controller.loading)
             ? Container()
             : Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: controller.newsList.length,
-                  itemBuilder: (context, index) {
-                    return NewsTile(newcontroller.newsList[index]);
-                  },
-                ),
-              );
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemCount: controller.newsList.length,
+            itemBuilder: (context, index) {
+              return NewsTile(newcontroller.newsList[index]);
+            },
+          ),
+        );
       },
     ));
   }
@@ -248,8 +250,8 @@ class _ValorantPageDesignState extends State<ValorantPageDesign> {
   Widget bottomNavBar() {
     return CurvedNavigationBar(
       items: const <Widget>[
-        Icon(Icons.segment, size: 35, color: Colors.deepPurpleAccent),
-        Icon(Icons.newspaper, size: 35, color: Colors.deepPurpleAccent),
+        Icon(Icons.segment, size: 35, color: Colors.red),
+        Icon(Icons.newspaper, size: 35, color: Colors.red),
       ],
       height: 55,
       color: Colors.grey.shade900,

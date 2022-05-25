@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ValorantNews {
+class News {
   String name;
   String title;
   String url;
   String urlToImage;
   String content;
 
-  ValorantNews(this.name, this.title, this.url, this.urlToImage, this.content);
+  News(this.name, this.title, this.url, this.urlToImage, this.content);
 
-  factory ValorantNews.fromJson(dynamic json) {
-    return ValorantNews(
+  factory News.fromJson(dynamic json) {
+    return News(
       json['source']['name'] as String,
       json['title'] as String,
       json['url'] as String,

@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             FontWeight.normal,
                             TextAlign.center,
                             FontStyle.normal,
-                            "asset/images/Person.png"),
+                            "asset/Icons/Person.png"),
                         Space(20),
                         TextfieldPassword(
                             "Password",
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             FontWeight.normal,
                             TextAlign.center,
                             FontStyle.normal,
-                           "asset/images/Key.png", () {
+                           "asset/Icons/Key.png", () {
                           setState(() {
                             _isObscure = !_isObscure;
                           });
