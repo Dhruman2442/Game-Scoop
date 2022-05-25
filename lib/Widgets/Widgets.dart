@@ -291,32 +291,47 @@ Widget MapsTiles() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+
 // News Page Widget
-Widget customnewstile(String title, Color color, NetworkImage images) {
+Widget customnewstile(
+  String title,
+  Color color,
+) {
   return Card(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    shadowColor: Colors.grey.shade500,
-    elevation: 5,
-    child: Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          alignment: Alignment.center,
-          image: images,
-          colorFilter: ColorFilter.mode(
-              Colors.transparent.withOpacity(0.7), BlendMode.srcATop),
-        ),
-      ),
-      child: ListTile(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        contentPadding: const EdgeInsets.all(20),
-        title: TextStyle1(title, 20, Colors.white, FontWeight.w400,
-            TextAlign.center, FontStyle.normal),
-      ),
-    ),
-  );
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shadowColor: Colors.white,
+      elevation: 3,
+      color: color,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20), color: Colors.black
+                // image: DecorationImage(
+                //   fit: BoxFit.cover,
+                //   alignment: Alignment.center,
+                //   image: images,
+                //   colorFilter: ColorFilter.mode(
+                //       Colors.transparent.withOpacity(0.7), BlendMode.srcATop),
+                // ),
+                ),
+            child: ListTile(
+              title: TextStyle1(title, 20, Colors.white, FontWeight.w400,
+                  TextAlign.center, FontStyle.normal),
+            ),
+          ),
+          Container(
+              color: Colors.transparent,
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.bottomRight,
+              child: Image.asset(
+                "asset/Icons/GamescoopLogo.png",
+                height: 30,
+                width: 30,
+              ))
+        ],
+      ));
 }
 
 Widget customNewsDetails(String images, String title, String content) {
@@ -515,7 +530,7 @@ Widget SliderMapListTile(String title, Color colors, String images) {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    child: SizedBox(
+                    child: const SizedBox(
                       width: 300,
                       height: 175,
                     )),

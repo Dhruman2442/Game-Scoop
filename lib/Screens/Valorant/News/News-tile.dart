@@ -20,6 +20,7 @@ class NewsTile extends StatelessWidget {
   }
 
   Widget Newstile(BuildContext context) {
+    var index;
     return Card(
       color: Colors.black,
       child: Container(
@@ -30,8 +31,10 @@ class NewsTile extends StatelessWidget {
           },
           child: Column(
             children: [
-              customnewstile(news.title, Colors.transparent,
-                  NetworkImage('${news.urlToImage}')),
+              customnewstile(
+                news.title, Colors.black,
+                // NetworkImage('${news.urlToImage}')
+              ),
             ],
           ),
         ),
